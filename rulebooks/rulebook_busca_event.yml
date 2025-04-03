@@ -1,13 +1,13 @@
 ---
 - name: Zabbix Test rulebook
-  hosts: all
+  hosts: localhost
+
   sources:
     - ansible.eda.webhook:
-        host: 192.168.0.254
+        host: 0.0.0.0
         port: 5001
         
   rules:
-  
     - name: debug
       condition: event.payload is defined
       action:
