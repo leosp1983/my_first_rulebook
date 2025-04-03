@@ -1,6 +1,6 @@
 ---
 - name: Zabbix Test rulebook
-  hosts: localhost
+  hosts: all
 
   sources:
     - ansible.eda.webhook:
