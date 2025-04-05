@@ -7,12 +7,14 @@
         port: 5005
   rules:
     - name: debug
-      condition: event.payload.event_name is defined
+      condition: event.payload
       action:
         debug:
 
     - name: Alerta de uso acima de 90%
-      condition: event.payload.event_name is defined and "used > 90%" in event.event_name
+      condition: |
+        event.payload.host_host == 'homelab01.lcs.local' and
+        (event.payload.operation_data.split(':')[1].strip().rstrip('%') | float) > 90
       action:
         run_job_template:
           name: "My first playbook"
