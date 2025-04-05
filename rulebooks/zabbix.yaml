@@ -14,7 +14,7 @@
     - name: Alerta de uso acima de 90%
       condition: |
         event.payload.host_host == 'homelab01.lcs.local' and
-        (event.payload.operation_data.split(':')[1].strip().rstrip('%') | float) > 90
+        event.payload.operation_data is match("^Space used: 9", ignorecase=true) 
       action:
         run_job_template:
           name: "My first playbook"
