@@ -15,5 +15,5 @@
       condition: event.event_name is defined and "used > 90%" in event.event_name
       action:
         run_job_template:
-          name: tech-aap-sh-mid-servers-prd
+          name: "My first playbook"
           organization: "default"
