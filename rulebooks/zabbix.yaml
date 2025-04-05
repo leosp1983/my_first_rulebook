@@ -14,5 +14,6 @@
     - name: Alerta de uso acima de 90%
       condition: event.event_name is defined and "used > 90%" in event.event_name
       action:
-        run_playbook:
-          name: playbooks/acionar_alerta.yaml
+        run_job_template:
+          name: tech-aap-sh-mid-servers-prd
+          organization: "default"
