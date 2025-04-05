@@ -1,0 +1,20 @@
+---
+- name: Deletar arquivo dummyfile.bin do disco E:
+  hosts: windows
+  gather_facts: no
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_user: lcsilva@LCS.LOCAL
+    ansible_winrm_password: homelab@1983
+    ansible_winrm_port: 5985
+    ansible_winrm_read_timeout_sec: 120
+    ansible_winrm_operation_timeout_sec: 60
+    ansible_winrm_server_cert_validation: ignore
+
+  tasks:
+
+    - name: Remover o arquivo E:\dummyfile.bin, se existir
+      win_file:
+        path: E:\dummyfile.bin
+        state: absent
+      
