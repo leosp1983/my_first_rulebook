@@ -6,10 +6,10 @@
         host: 0.0.0.0
         port: 5005
   rules:
-    # - name: debug
-    #   condition: event.payload is defined
-    #   action:
-    #     debug:
+    - name: debug
+      condition: event.payload.event_name is defined
+      action:
+        debug:
 
     - name: Alerta de uso acima de 90%
       condition: event.payload.event_name is defined and "used > 90%" in event.event_name
