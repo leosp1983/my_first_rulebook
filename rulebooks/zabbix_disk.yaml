@@ -1,0 +1,16 @@
+---
+- name: Zabbix Test rulebook
+  hosts: EDA
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5005
+  rules:
+    - name: Alerta de uso acima de 90%
+      condition: |
+        event.payload.host_host == 'homelab01.lcs.local' and
+        event.payload.operation_data is match("^Space used: 9", ignorecase=true) 
+      action:
+        run_job_template:
+          name: "My first playbook"
+          organization: "Default"
