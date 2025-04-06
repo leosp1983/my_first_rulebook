@@ -16,4 +16,5 @@
           organization: "Default"
           job_args:
             extra_vars:
+              server: "{{ event.payload.host_ip }}"
               service: "{{ event.payload.event_tags.service[0] }}"

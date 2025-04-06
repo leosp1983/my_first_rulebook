@@ -1,6 +1,6 @@
 ---
 - name: Deletar arquivo dummyfile.bin do disco E
-  hosts: windows
+  hosts: "{{server}}"
   gather_facts: no
   vars:
     ansible_connection: winrm
