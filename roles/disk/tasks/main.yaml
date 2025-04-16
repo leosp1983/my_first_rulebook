@@ -3,7 +3,7 @@
     path: E:\dummyfile.bin
     state: absent
 
-- name: Restart a service
-  ansible.windows.win_service:
-    name: "{{ service }}"
-    state: restarted
+# - name: Restart a service
+#   ansible.windows.win_service:
+#     name: "{{ service }}"
+#     state: restarted
