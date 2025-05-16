@@ -8,11 +8,11 @@
 
   rules:
   
-    - name: debug
-      condition: event.payload
-      action:
-        debug:  
-          msg: "Event received: {{ event.payload.event_name }}"
+    # - name: debug
+    #   condition: event.payload
+    #   action:
+    #     debug:  
+    #       msg: "Event received: {{ event.payload.event_name }}"
     
     - name: Motor de regras
       condition: |
