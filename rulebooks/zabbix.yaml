@@ -15,9 +15,7 @@
     #       msg: "Event received: {{ event.payload.event_name }}"
     
     - name: Motor de regras
-      condition: |
-        event.payload.host_host == 'homelab03' and
-        event.payload.event_name contains "not running"
+      condition: event.payload.host_host == 'homelab03'
       action:
         run_job_template:
           name: "Cac Claro EDA"
