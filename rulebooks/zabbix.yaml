@@ -14,15 +14,15 @@
         debug:  
           msg: "Event received: {{ event.payload.event_name }}"
     
-    # - name: Motor de regras
-    #   condition: |
-    #     event.payload.host_host == 'homelab03' and
-    #     event.payload.event_name contains "not running"
-    #   action:
-    #     run_job_template:
-    #       name: "My first playbook"
-    #       organization: "Default"
-    #       job_args:
-    #         extra_vars:
-    #           server: "{{ event.payload.host_ip }}"
-    #           service: "{{ event.payload.event_name }}"
+    - name: Motor de regras
+      condition: |
+        event.payload.host_host == 'homelab03' and
+        event.payload.event_name contains "not running"
+      action:
+        run_job_template:
+          name: "Cac Claro EDA"
+          organization: "Default"
+          job_args:
+            extra_vars:
+              server: "{{ event.payload.host_ip }}"
+              service: "{{ event.payload.event_name }}"
