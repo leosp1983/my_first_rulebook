@@ -9,10 +9,10 @@
         
   rules:
 
-    - name: Alerta de uso acima de 90%
+    - name: Motor de regras
       condition: |
-        event.payload.host_host == 'homelab01.lcs.local' and
-        event.payload.operation_data is match("^Stopped", ignorecase=true)
+        event.payload.host_host == 'homelab03' and
+        event.payload.motor-de-regras.service is match("Service is not running", ignorecase=true)
       action:
         run_job_template:
           name: "My first playbook"
