@@ -16,8 +16,6 @@
     
     - name: Motor de regras
       condition: event.payload.host_host == 'homelab03'
-      vars:
-        service_name: event.payload.event_name is search("motor-de-regras\\.service") 
       action:
         run_job_template:
           name: "Orizon"
@@ -25,4 +23,4 @@
           job_args:
             extra_vars:
               server: "{{ event.payload.host_ip }}"
-              service: "{{ service_name }}"
+              service: '{{ event.payload.event_name is search("motor-de-regras\.service") }}'
