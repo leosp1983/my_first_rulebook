@@ -25,7 +25,7 @@
               server: "{{ event.payload.host_ip }}"
               service: "{{ event.payload.event_name.split(':')[1] | trim }}"
     
-    - name: Motor de regras
+    - name: File system
       condition: event.payload.event_name is search("Space is critically low", ignorecase=true)
       action:
         run_job_template:
