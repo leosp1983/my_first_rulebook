@@ -24,3 +24,14 @@
             extra_vars:
               server: "{{ event.payload.host_ip }}"
               service: "{{ event.payload.event_name.split(':')[1] | trim }}"
+    
+    - name: Motor de regras
+      condition: event.payload.event_name is search("Space is critically low", ignorecase=true)
+      action:
+        run_job_template:
+          name: "Orizon"
+          organization: "Default"
+          job_args:
+            extra_vars:
+              server: "{{ event.payload.host_ip }}"
+              dir: "{{ event.payload.filesystem}}"

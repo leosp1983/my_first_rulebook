@@ -13,3 +13,9 @@
     name: "{{service}}"
     state: restarted
   ignore_errors: true
+
+- name: Remove file (delete file)
+  ansible.builtin.file:
+    path: "{{dir}}/lixo.img"
+    state: absent
+  ignore_errors: true
