@@ -15,7 +15,7 @@
     #       msg: "Event received: {{ event.payload.event_name }}"
     
     - name: Motor de regras
-      condition: event.payload.host_host == 'homelab03'
+      condition: event.payload.event_name is search("Service is not running", ignorecase=true)
       action:
         run_job_template:
           name: "Orizon"
