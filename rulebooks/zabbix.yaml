@@ -16,8 +16,6 @@
     
     - name: Motor de regras
       condition: event.payload.host_host == 'homelab03'
-      vars:
-        teste: "{{ event.payload.event_name | regex_search('[a-zA-Z0-9_-]+\\.service') }}"
       action:
         run_job_template:
           name: "Orizon"
@@ -25,4 +23,4 @@
           job_args:
             extra_vars:
               server: "{{ event.payload.host_ip }}"
-              service: "{{ teste }}"
+              service: "{{ event.payload.event_name.split(':')[1] | trim }}"
