@@ -8,10 +8,7 @@
 # #     name: "{{ service }}"
 # #     state: restarted
 
-# - name: Start service httpd, if not started
-#   ansible.builtin.service:
-#     name: motor-de-regras.service
-#     state: started
-
-- name: Execute the command in remote shell; stdout goes to the specified file on the remote
-  ansible.builtin.shell: systemctl start motor-de-regras.service
+- name: Start service httpd, if not started
+  ansible.builtin.service:
+    name: motor-de-regras.service
+    state: restarted
