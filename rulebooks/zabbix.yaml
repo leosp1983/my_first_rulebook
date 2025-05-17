@@ -18,7 +18,7 @@
       condition: event.payload.host_host == 'homelab03'
       action:
         run_job_template:
-          name: "Cac Claro EDA"
+          name: "Orizon"
           organization: "Default"
           job_args:
             extra_vars:

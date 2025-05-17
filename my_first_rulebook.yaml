@@ -1,6 +1,6 @@
 ---
 - name: Teste rulebook
-  hosts: 192.168.0.62
+  hosts: "{{server}}"
   gather_facts: yes
   # vars:
   #   ansible_connection: winrm
