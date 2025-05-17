@@ -23,4 +23,4 @@
           job_args:
             extra_vars:
               server: "{{ event.payload.host_ip }}"
-              service: '{{ event.payload.event_name is search("motor-de-regras\.service") }}'
+              service: "{{ event.payload.event_name | regex_search('[a-zA-Z0-9_-]+\\.service') }}"
