@@ -34,4 +34,4 @@
           job_args:
             extra_vars:
               server: "{{ event.payload.host_ip }}"
-              dir: "{{ event.payload.filesystem[0] }}"
+              dir: "{{ event.payload.event_tags.filesystem[0] }}"
