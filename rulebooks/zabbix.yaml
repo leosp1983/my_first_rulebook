@@ -7,21 +7,7 @@
         port: 5015
 
   rules:
-    
-    - name: Alerta de serviço parado (Linux)
-      condition: |
-        event.payload.event_tags.target[0] == "linux" and
-        event.payload.event_name is search("Service is not running", ignorecase=true)
-      action:
-        run_job_template:
-          name: "Orizon"
-          organization: "Default"
-          job_args:
-            extra_vars:
-              server: "{{ event.payload.host_ip }}"
-              service: "{{ event.payload.event_name.split(':')[1] | trim }}"
-              so: "{{ event.payload.event_tags.target[0] }}"
-    
+
     - name: Alerta de uso acima de 90% (Linux)
       condition: |
         event.payload.event_tags.target[0] == "linux" and
@@ -35,7 +21,35 @@
               server: "{{ event.payload.host_ip }}"
               dir: "{{ event.payload.event_tags.filesystem[0] }}"
               so: "{{ event.payload.event_tags.target[0] }}"
-
+    
+    - name: Alerta de serviço parado (Linux)
+      condition: |
+        event.payload.event_tags.target[0] == "systemd" and
+        event.payload.event_name is search("Service is not running", ignorecase=true)
+      action:
+        run_job_template:
+          name: "Orizon"
+          organization: "Default"
+          job_args:
+            extra_vars:
+              server: "{{ event.payload.host_ip }}"
+              service: "{{ event.payload.event_name.split(':')[1] | trim }}"
+              so: "{{ event.payload.event_tags.target[0] }}"
+    
+    - name: Alerta de serviço parado (Windows)
+      condition: |
+        event.payload.event_tags.target[0] == "windows" and
+        event.payload.event_name is search("is not running", ignorecase=true)
+      action:
+        run_job_template:
+          name: "Orizon"
+          organization: "Default"
+          job_args:
+            extra_vars:
+              server: "{{ event.payload.host_ip }}"
+              service: "{{ event.payload.service }}"
+              so: "{{ event.payload.event_tags.target[0] }}"
+    
     - name: Alerta de uso acima de 90% (Windows)
       condition: |
         event.payload.event_tags.target[0] == "windows" and

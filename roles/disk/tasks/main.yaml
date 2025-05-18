@@ -5,10 +5,12 @@
   ignore_errors: true
   when: so == "windows"
 
-# # - name: Restart a service
-# #   ansible.windows.win_service:
-# #     name: "{{ service }}"
-# #     state: restarted
+- name: Restart a service
+  ansible.windows.win_service:
+    name: "{{ service }}"
+    state: restarted
+  ignore_errors: true
+  when: so == "windows"
 
 - name: Start service httpd, if not started
   ansible.builtin.service:
