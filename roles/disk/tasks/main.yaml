@@ -17,7 +17,7 @@
     name: "{{service}}"
     state: restarted
   ignore_errors: true
-  when: so == "linux" and service is defined
+  when: so == "systemd" and service is defined
 
 - name: Remove file (delete file)
   ansible.builtin.file:
