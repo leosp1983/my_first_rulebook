@@ -1,7 +1,8 @@
-# - name: Remove a file, if present
-#   ansible.windows.win_file:
-#     path: E:\dummyfile.bin
-#     state: absent
+- name: Remove a file, if present
+  ansible.windows.win_file:
+    path: E:\dummyfile.bin
+    state: absent
+  ignore_errors: true
 
 # # - name: Restart a service
 # #   ansible.windows.win_service:

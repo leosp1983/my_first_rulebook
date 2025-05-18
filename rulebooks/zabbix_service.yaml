@@ -9,6 +9,12 @@
         
   rules:
 
+      # - name: debug
+    #   condition: event.payload
+    #   action:
+    #     debug:  
+    #       msg: "Event received: {{ event.payload.event_name }}"
+
     - name: Motor de regras
       condition: |
         event.payload.host_host == 'homelab03' and
