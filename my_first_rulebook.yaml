@@ -1,23 +1,23 @@
 ---
-# - hosts: localhost
-#   gather_facts: no
+- hosts: localhost
+  gather_facts: no
 
-#   tasks:
+  tasks:
 
-#   - include_role:
-#       name: inventory
-
-# - name: Teste rulebook
-#   hosts: "{{server}}"
-#   gather_facts: no
-
-#   tasks:
-
-#     - include_role:
-#         name: disk
+  - include_role:
+      name: inventory
 
 - name: Teste rulebook
-  hosts: "{{server}}"
+  hosts: Linux
+  gather_facts: no
+
+  tasks:
+
+    - include_role:
+        name: disk
+
+- name: Teste rulebook
+  hosts: Windows
   gather_facts: no
   vars:
     ansible_connection: winrm

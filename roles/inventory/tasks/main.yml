@@ -2,30 +2,30 @@
   wait_for:
     host: "{{item}}"
     port: 22
-    timeout: 3
+    timeout: 10
   ignore_errors: yes
   register: ssh
-  with_items: "{{hostname}}"
+  loop: "{{server}}"
 
 - name: Attempt to connect via WinRM
   wait_for:
     host: "{{item}}"
     port: 5985
-    timeout: 3
+    timeout: 10
   ignore_errors: yes
   register: winrm
-  with_items: "{{hostname}}"
+  loop: "{{server}}"
 
 - name: Populate Linux hosts group
   add_host:
     name: "{{item.item}}"
     groups: Linux
   when: item.state is defined
-  with_items: "{{ssh.results}}"
+  loop: "{{ssh.results}}"
 
 - name: Populate Windows hosts group
   add_host:
     name: "{{item.item}}"
     groups: Windows
   when: item.state is defined
-  with_items: "{{winrm.results}}"
+  loop: "{{winrm.results}}"
