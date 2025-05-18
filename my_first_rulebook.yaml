@@ -10,11 +10,15 @@
 - name: Teste rulebook
   hosts: "{{server}}"
   gather_facts: no
+  vars:
+    ansible_connection: ssh
 
   tasks:
 
     - include_role:
         name: disk
+  
+  when: target == "linux"
 
 - name: Teste rulebook
   hosts: "{{server}}"
@@ -33,3 +37,5 @@
 
     - include_role:
         name: disk
+  
+  when: target == "windows"
