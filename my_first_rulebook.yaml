@@ -7,18 +7,14 @@
 #   - include_role:
 #       name: inventory
 
-- name: Teste rulebook
-  hosts: "{{server}}"
-  gather_facts: no
-  vars:
-    ansible_connection: ssh
+# - name: Teste rulebook
+#   hosts: "{{server}}"
+#   gather_facts: no
 
-  tasks:
+#   tasks:
 
-    - include_role:
-        name: disk
-  
-  when: target == "linux"
+#     - include_role:
+#         name: disk
 
 - name: Teste rulebook
   hosts: "{{server}}"
@@ -37,5 +33,3 @@
 
     - include_role:
         name: disk
-  
-  when: target == "windows"
