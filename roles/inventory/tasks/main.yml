@@ -5,7 +5,7 @@
     timeout: 10
   ignore_errors: yes
   register: ssh
-  loop: "{{server}}"
+  with_items: "{{server}}"
 
 - name: Attempt to connect via WinRM
   wait_for:
@@ -14,18 +14,18 @@
     timeout: 10
   ignore_errors: yes
   register: winrm
-  loop: "{{server}}"
+  with_items: "{{server}}"
 
 - name: Populate Linux hosts group
   add_host:
     name: "{{item.item}}"
     groups: Linux
   when: item.state is defined
-  loop: "{{ssh.results}}"
+  with_items: "{{ssh.results}}"
 
 - name: Populate Windows hosts group
   add_host:
     name: "{{item.item}}"
     groups: Windows
   when: item.state is defined
-  loop: "{{winrm.results}}"
+  with_items: "{{winrm.results}}"
