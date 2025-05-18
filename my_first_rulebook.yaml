@@ -4,8 +4,8 @@
 
   tasks:
 
-  - include_role:
-      name: inventory
+    - include_role:
+        name: inventory
 
 - name: Teste rulebook
   hosts: Linux
