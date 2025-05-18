@@ -3,6 +3,7 @@
     path: '{{dir}}\dummyfile.bin'
     state: absent
   ignore_errors: true
+  when: so == "windows"
 
 # # - name: Restart a service
 # #   ansible.windows.win_service:
@@ -14,9 +15,11 @@
     name: "{{service}}"
     state: restarted
   ignore_errors: true
+  when: so == "linux"
 
 - name: Remove file (delete file)
   ansible.builtin.file:
     path: "{{dir}}/lixo.img"
     state: absent
   ignore_errors: true
+  when: so == "linux"
