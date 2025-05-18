@@ -1,6 +1,6 @@
 - name: Remove a file, if present
   ansible.windows.win_file:
-    path: "{{dir}}\dummyfile.bin"
+    path: '{{dir}}\dummyfile.bin'
     state: absent
   ignore_errors: true
 
