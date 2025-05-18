@@ -3,14 +3,14 @@
     path: '{{dir}}\dummyfile.bin'
     state: absent
   ignore_errors: true
-  when: so == "windows"
+  when: so == "windows" and dir is defined
 
 - name: Restart a service
   ansible.windows.win_service:
     name: "{{ service }}"
     state: restarted
   ignore_errors: true
-  when: so == "windows"
+  when: so == "windows" and service is defined
 
 - name: Start service httpd, if not started
   ansible.builtin.service:
@@ -24,4 +24,4 @@
     path: "{{dir}}/lixo.img"
     state: absent
   ignore_errors: true
-  when: so == "linux"
+  when: so == "linux" and dir is defined
