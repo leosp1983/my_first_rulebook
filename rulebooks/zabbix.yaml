@@ -47,7 +47,7 @@
           job_args:
             extra_vars:
               server: "{{ event.payload.host_ip }}"
-              service: "{{ event.payload.service }}"
+              service: "{{ event.payload.service[0] }}"
               so: "{{ event.payload.event_tags.target[0] }}"
     
     - name: Alerta de uso acima de 90% (Windows)
